@@ -66,7 +66,7 @@ class NvRen : Ren
 
     protected override void Mengxiang()
     {
-        Debug.Log("我想成为超人");
+        Debug.Log("我想成为公主");
     }
 }
 
