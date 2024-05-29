@@ -9,8 +9,8 @@ using UnityEngine.UI;
 
 public class QiJoystick : MonoBehaviour
 {
-    public Vector2 value;
-    public Vector3 nowControlPos;
+    public  Vector2 value;
+    public  Vector3 nowControlPos;
     //public  BarValueEvent onBarValueUpdate;
     float raduis;
     RectTransform bar;
@@ -105,7 +105,7 @@ public class QiJoystick : MonoBehaviour
         });
 
 
-       
+        
     }
 
     // Update is called once per frame
@@ -115,7 +115,7 @@ public class QiJoystick : MonoBehaviour
         Vector3 dir = (bar.position - range.position);
         dir.x /= raduis;
         dir.y /= raduis;
-        value = dir.normalized;
+        value = dir;
 
         if (Input.touchCount == 0 && Input.GetMouseButton(0) == false)
         {
@@ -130,28 +130,6 @@ public class QiJoystick : MonoBehaviour
     }
 
 
-
-
-
-
-    /// <summary>
-    /// 获取鼠标停留处UI
-    /// </summary>
-    /// <param name="canvas"></param>
-    /// <returns></returns>
-    public GameObject GetOverUI(GameObject canvas, Vector2 point)
-    {
-        PointerEventData pointerEventData = new PointerEventData(EventSystem.current);
-        pointerEventData.position = point;
-        GraphicRaycaster gr = canvas.GetComponent<GraphicRaycaster>();
-        List<RaycastResult> results = new List<RaycastResult>();
-        gr.Raycast(pointerEventData, results);
-        if (results.Count != 0)
-        {
-            return results[0].gameObject;
-        }
-        return null;
-    }
 
 
     private void SetTriggerEvent(MaskableGraphic ui, EventTriggerType type, UnityAction<BaseEventData> doSth)
@@ -176,4 +154,3 @@ public class QiJoystick : MonoBehaviour
 
     }
 }
-
